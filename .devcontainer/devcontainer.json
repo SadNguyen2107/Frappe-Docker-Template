@@ -7,9 +7,13 @@
       "extensions": [
         "ms-python.python",
         "ms-vscode.live-server",
-        "grapecity.gc-excelviewer",
-        "mtxr.sqltools",
-        "visualstudioexptteam.vscodeintellicode"
+        "visualstudioexptteam.vscodeintellicode",
+        "ErickSamaniego.frappe-snippets",
+        "AnkushMenat.frappe-test-runner",
+        "netchampfaris.frappe-intellisense",
+        "netchampfaris.frappe-bench-vscode",
+        "rohitpg18.frappe-js-py-snippets",
+        "saivineeth.frappe-vscode"
       ],
       "settings": {
         "terminal.integrated.profiles.linux": {
