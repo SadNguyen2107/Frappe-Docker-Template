@@ -18,7 +18,9 @@
         "AnkushMenat.frappe-test-runner",
         "netchampfaris.frappe-intellisense",
         "netchampfaris.frappe-bench-vscode",
-        "rohitpg18.frappe-js-py-snippets"
+        "rohitpg18.frappe-js-py-snippets",
+        "esbenp.prettier-vscode",
+        "EditorConfig.EditorConfig"
       ],
       "settings": {
         "terminal.integrated.profiles.linux": {
