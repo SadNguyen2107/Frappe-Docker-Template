@@ -127,14 +127,14 @@ This is a template for creating a Frappe Docker development environment using Vi
 
 11. Set `developer mode`:
 
-    To set the developer mode local for the site, run the following command:
+    To set the developer mode **local** for the site, run the following command:
 
     ```bash
     bench --site mysite.local set-config developer_mode 1
     bench --site mysite.local clear-cache
     ```
 
-    Or to set the developer mode globally for all sites, run the following command:
+    Or to set the developer mode **globally** for all sites, run the following command:
 
     ```bash
     bench set-config -g developer_mode true
