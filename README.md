@@ -118,7 +118,7 @@ This is a template for creating a Frappe Docker development environment using Vi
 10. Create a new site by running the following command:
 
     ```bash
-    bench new-site bench new-site --db-type mariadb --mariadb-root-username root --mariadb-root-password gowest --verbose mysite.local
+    bench new-site --db-type mariadb --mariadb-root-username root --mariadb-root-password gowest --verbose mysite.local
     ```
 
     Replace `mysite.local` with your desired site name.
