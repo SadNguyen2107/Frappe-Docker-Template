@@ -93,7 +93,47 @@ This is a template for creating a Frappe Docker development environment using Vi
     cd frappe-bench
     ```
 
-9. Create app
+9. Update the `sites/common_site_config.json` file using the following command:
+
+    ```bash
+    bench set-config -g db_host mariadb
+    bench set-config -g db_port 3306
+    bench set-config -g redis_cache redis://redis-cache:6379
+    bench set-config -g redis_queue redis://redis-queue:6379
+    bench set-config -g redis_socketio redis://redis-queue:6379
+    ```
+
+    To get the following result:
+
+    ```json
+    {
+        "db_host": "mariadb",
+        "db_port": 3306,
+        "redis_cache": "redis://redis-cache:6379",
+        "redis_queue": "redis://redis-queue:6379",
+        "redis_socketio": "redis://redis-queue:6379"
+    }
+    ```
+
+10. Create a new site by running the following command:
+
+    ```bash
+    bench new-site bench new-site --db-type mariadb --mariadb-root-username root --mariadb-root-password gowest --verbose mysite.local
+    ```
+
+    Replace `mysite.local` with your desired site name.
+
+    Type the password for the `Administrator` user when prompted. The default password is `admin`.
+
+11. Set `developer mode`:
+
+    ```bash
+    bench --site mysite.local set-config developer_mode 1
+    bench --site mysite.local clear-cache
+    ```
+
+12. Create app
+
     For Frappe, run the following command:
 
     ```bash
@@ -108,15 +148,14 @@ This is a template for creating a Frappe Docker development environment using Vi
     bench new-app myapp
     ```
 
-10. Create a new site by running the following command:
+13. How to install `ERPnext`:
 
     ```bash
-    bench new-site mysite.local
+    bench get-app --branch version-15 --resolve-deps erpnext
+    bench --site mysite.local install-app erpnext
     ```
 
-    Replace `mysite.local` with your desired site name.
-
-11. Install app on site
+14. Install app on site
 
     ```bash
     bench --site mysite.local install-app ${APP_NAME}
@@ -131,33 +170,33 @@ This is a template for creating a Frappe Docker development environment using Vi
     bench --site mysite.local install-app myapp
     ```
 
-12. To start the Frappe development server, run the following command:
+15. To start the Frappe development server, run the following command:
 
     ```bash
     bench start
     ```
 
-13. You can access the Frappe application in your web browser at `http://mysite.local:8000`. The default username and password are `Administrator` and `admin`, respectively.
+16. You can access the Frappe application in your web browser at `http://mysite.local:8000`. The default username and password are `Administrator` and `admin`, respectively.
 
-14. To stop the container, you can use the `Dev Containers: Stop Container` command from the Command Palette or simply close Visual Studio Code. The container will be stopped automatically.
+17. To stop the container, you can use the `Dev Containers: Stop Container` command from the Command Palette or simply close Visual Studio Code. The container will be stopped automatically.
 
-15. To remove the container, you can use the `Dev Containers: Remove Container` command from the Command Palette. This will remove the container and all its data. If you want to keep the data, you can use the `Dev Containers: Rebuild Container` command instead.
+18. To remove the container, you can use the `Dev Containers: Remove Container` command from the Command Palette. This will remove the container and all its data. If you want to keep the data, you can use the `Dev Containers: Rebuild Container` command instead.
 
-16. To rebuild the container with a different Frappe version, you can modify the `FRAPPE_VERSION` variable in the `.devcontainer/devcontainer.json` file and then use the `Dev Containers: Rebuild Container` command from the Command Palette.
+19. To rebuild the container with a different Frappe version, you can modify the `FRAPPE_VERSION` variable in the `.devcontainer/devcontainer.json` file and then use the `Dev Containers: Rebuild Container` command from the Command Palette.
 
-17. To customize the environment variables, you can modify the `ENV` section in the `.devcontainer/Dockerfile` file. You can add or remove environment variables as needed. Make sure to rebuild the container after making any changes to the Dockerfile.
+20. To customize the environment variables, you can modify the `ENV` section in the `.devcontainer/Dockerfile` file. You can add or remove environment variables as needed. Make sure to rebuild the container after making any changes to the Dockerfile.
 
-18. To install additional dependencies, you can modify the `RUN` section in the `.devcontainer/Dockerfile` file. You can add or remove dependencies as needed. Make sure to rebuild the container after making any changes to the Dockerfile.
+21. To install additional dependencies, you can modify the `RUN` section in the `.devcontainer/Dockerfile` file. You can add or remove dependencies as needed. Make sure to rebuild the container after making any changes to the Dockerfile.
 
-19. To run the Frappe application in production mode, you can modify the `CMD` section in the `.devcontainer/Dockerfile` file. You can change the command to start the Frappe application in production mode. Make sure to rebuild the container after making any changes to the Dockerfile.
+22. To run the Frappe application in production mode, you can modify the `CMD` section in the `.devcontainer/Dockerfile` file. You can change the command to start the Frappe application in production mode. Make sure to rebuild the container after making any changes to the Dockerfile.
 
-20. To run the Frappe application in development mode, you can modify the `CMD` section in the `.devcontainer/Dockerfile` file. You can change the command to start the Frappe application in development mode. Make sure to rebuild the container after making any changes to the Dockerfile.
+23. To run the Frappe application in development mode, you can modify the `CMD` section in the `.devcontainer/Dockerfile` file. You can change the command to start the Frappe application in development mode. Make sure to rebuild the container after making any changes to the Dockerfile.
 
-21. To run the Frappe application in test mode, you can modify the `CMD` section in the `.devcontainer/Dockerfile` file. You can change the command to start the Frappe application in test mode. Make sure to rebuild the container after making any changes to the Dockerfile.
+24. To run the Frappe application in test mode, you can modify the `CMD` section in the `.devcontainer/Dockerfile` file. You can change the command to start the Frappe application in test mode. Make sure to rebuild the container after making any changes to the Dockerfile.
 
-22. To run the Frappe application in production mode with SSL, you can modify the `CMD` section in the `.devcontainer/Dockerfile` file. You can change the command to start the Frappe application in production mode with SSL. Make sure to rebuild the container after making any changes to the Dockerfile.
+25. To run the Frappe application in production mode with SSL, you can modify the `CMD` section in the `.devcontainer/Dockerfile` file. You can change the command to start the Frappe application in production mode with SSL. Make sure to rebuild the container after making any changes to the Dockerfile.
 
-23. Remove all irrelevant files and folders that are not needed for your project.
+26. Remove all irrelevant files and folders that are not needed for your project.
 
 - `.git` folder
 - `.gitignore` file
