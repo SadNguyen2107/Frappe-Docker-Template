@@ -102,6 +102,12 @@ This is a template for creating a Frappe Docker development environment using Vi
 
     Replace `${APP_NAME}` with your desired app name.
 
+    Example:
+
+    ```bash
+    bench new-app myapp
+    ```
+
 10. Create a new site by running the following command:
 
     ```bash
@@ -118,6 +124,12 @@ This is a template for creating a Frappe Docker development environment using Vi
 
     Replace `mysite.local` with your site name.
     Replace `${APP_NAME}` with the name of the app you created in step 9.
+
+    Example:
+
+    ```bash
+    bench --site mysite.local install-app myapp
+    ```
 
 12. To start the Frappe development server, run the following command:
 
